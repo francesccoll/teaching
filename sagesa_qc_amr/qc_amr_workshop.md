@@ -181,10 +181,10 @@ All four *Salmonella* strains are resistant to ampicillin according to phenotypi
 Three *Salmonella* strains are resistant to trimethoprim/sulfamethoxazole. Can you identify the AMR genes responsible for resistance to this antibiotic combination?
 
 **❓ Question**
-One *Salmonella* strain (WW28B) is resistant to fosfomycin. Can you identify the AMR gene(s) responsible for resistance to this antibiotic?
+Two *Salmonella* strains (B27 and WW28B) are resistant to fosfomycin. Can you identify the AMR gene(s) responsible for resistance to this antibiotic?
 
 **❓ Question**
-For false negatives, i.e. phenotypically resistant strains without any resistance determinant detected by AMRFinder, could you hypothesise what biological phenomenon could be responsible for such discrepancies?
+For false negatives, i.e. phenotypically resistant strains without any resistance determinant detected by AMRFinder, could you hypothesise what biological phenomenon may be responsible for such discrepancies?
 
 
 ### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
