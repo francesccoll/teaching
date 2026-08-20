@@ -14,7 +14,7 @@
    
 ## 1. Illumina Raw Sequencing Data Quality <a name="illuminaqc"></a>
 
-### Step 1: Download fastq files
+### Step 1.1: Download fastq files
 
 ```
 conda activate fastq-dl
@@ -26,16 +26,16 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/002/SRR9027862/SRR9027862_1.fastq
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/002/SRR9027862/SRR9027862_2.fastq.gz
 ```
 
-### Step 2: Running FastQC on Illumina fastqs
+### Step 1.2: Running FastQC on Illumina fastqs
 
 ```
 fastqc
 ```
 
-### Step 3:  Opening the FastQC Report (GUI)
+### Step 1.3:  Opening the FastQC Report (GUI)
 
 
-### Step 4:  Running MultiQC
+### Step 1.4:  Running MultiQC
 
 ```
 cd output/multiqc
@@ -47,19 +47,99 @@ multiqc ./
 
 ## 2. ONT Raw Sequencing Data Quality <a name="ontqc"></a>
 
+## Step 2.1: Quality Control with NanoQC and NanoPlot
+
+```
+nanoQC ERR8282741.fastq.gz -o qc_output
+```
+```
+NanoPlot --fastq ERR8282741.fastq.gz -o qc_output
+```
+
 ## 3. Illumina Read Cleaning and Pre-processing <a name="illuminacleaning"></a>
 
+## Step 3.1: Run fastp
+```
+fastp --in1 SRR9027862_1.fastq.gz --in2 SRR9027862_2.fastq.gz --out1 SRR9027862_1.trimmed.fastq.gz --out2 SRR9027862.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 20
+```
+
 ## 4. ONT Read Cleaning and Pre-processing <a name="ontcleaning"></a>
+
+## Step 4.1: Adapter Trimming with Porechop
+```
+porechop -i ERR8282741.fastq.gz -o ERR8282741_trimmed.fastq.gz
+```
+```
+filtlong --keep_percent 90 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered.fastq
+```
+```
+filtlong --min_length 1000 ERR8282741_filtered.fastq > ERR8282741_filtered_min1k.fastq
+```
 
 ## 5. Sequencing Depth and Coverage <a name="depth"></a>
 
 ## 6. Genome Assembly Quality <a name="assemblyqc"></a>
 
+### Step 6.1 Downloading Illumina genome assemblies from AllTheBacteria
+```
+atb info SAMN11579777
+```
+```
+wget https://allthebacteria-assemblies.s3.eu-west-2.amazonaws.com/SAMN11579777.fa.gz
+```
+```
+gunzip SAMN11579777.fa.gz
+mv SAMN11579777.fa E_faecium.kerschner2019.Ef-11.fa
+```
+
+Count how many contigs the Illumina assembly has:
+```
+grep -c ">" E_faecium.kerschner2019.Ef-11.fa
+```
+
+### Step 6.2 Assessing assembly quality with QUAST
+```
+quast -h
+```
+```
+quast \
+E_faecium.VREN1631.illumina_assembly.fna \
+E_faecium.VREN1631.hybrid_assembly.fna \
+-o quast/
+```
+
+### Step 6.3 Assessing assembly quality with BUSCO markers
+
+
 ## 7. Contamination and Data Integrity <a name="contamination"></a>
+
+### Step 7.1 Using CheckM2 to predict genome completeness
+```
+checkm2 predict --allmodels --lowmem --database_path {options.database} --remove_intermediates --threads 8
+```
+
+### Step 7.2 Using Sylph to identify taxonomic identity and contamination
+```
+sylph profile $GTDB -1 $fastq1 -2 $fastq2 -t 8 > $run_accession".profiling.tsv"
+```
 
 ## 8. AMR detection with AMRFinderPlus <a name="amrfinderplus"></a>
 
+```
+amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --threads 8
+```
+
 ## 9. Interpretation of AMR reports: case studies <a name="casestudies"></a>
+
+### 9.1 Identifying hetero-resistance and mixed infections from Mycobacterium tuberculosis genome data
+
+### 9.2 Resolving AMR phenotype-genotype discrepancies from Salmonella enterica genomes  
+
+### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
+
+### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
+
+
 
 
 
