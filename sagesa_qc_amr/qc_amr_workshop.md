@@ -137,8 +137,6 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
 
-### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
-
 Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a hospital outbreak in Austria. We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina data. The table below includes the genome accessions, isolate Ids and linezolid MIC.
 
 | Illumina run accession | Isolate ID | Biosample accession | Linezolid MIC | Linezolid resistance |
@@ -176,7 +174,7 @@ amrfinder -n ./data/E_faecium.kerschner2019.Ef-11.fa -O Enterococcus_faecium -o 
 amrfinder -n ./data/E_faecium.kerschner2019.Ef-39.fa -O Enterococcus_faecium -o E_faecium.kerschner2019.Ef-39.amrfinder.txt -d ./data/amrfinder_db/latest
 ```
 
-Now, we will used a specialized tool called LRE-Finder, a tool developed to XXX. As this tools accepts raw Illumina reads as input, we will download the Illumina fastq.gz files using ```fastq-dl```:
+Now, we will used a specialized tool called [LRE-Finder](https://pubmed.ncbi.nlm.nih.gov/30863844/)), a tool developed to detect genetic markers of linezolid resistance in enterococci from whole-genome sequences. As this tools accepts raw Illumina reads as input, we will download the Illumina fastq.gz files using ```fastq-dl```:
 
 ```
 conda activate fastq-dl
@@ -189,6 +187,8 @@ fastq-dl --accession SRR9027815
 mv *.fastq.gz ./data/
 ```
 
+After downloading the fastq files, run the following ```LRE-Finder.py``` commands:
+
 ```
 LRE-Finder.py -ipe ./data/SRR9027862_1.fastq.gz ./data/SRR9027862_2.fastq.gz -o SRR9027862_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
 LRE-Finder.py -ipe ./data/SRR9027818_1.fastq.gz ./data/SRR9027818_2.fastq.gz -o SRR9027818_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
@@ -196,6 +196,7 @@ LRE-Finder.py -ipe ./data/SRR9027816_1.fastq.gz ./data/SRR9027816_2.fastq.gz -o 
 LRE-Finder.py -ipe ./data/SRR9027815_1.fastq.gz ./data/SRR9027815_2.fastq.gz -o SRR9027815_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
 ```
 
+### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
 
 
 
