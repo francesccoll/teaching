@@ -137,7 +137,7 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
 
-Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a hospital outbreak in Austria. We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina data. The table below includes the genome accessions, isolate Ids and linezolid MIC.
+Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a [hospital outbreak in Austria](https://link.springer.com/article/10.1186/s13756-019-0598-z). We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina sequence data. The table below includes the accessions, isolate Ids, and linezolid MIC of the VRE genomes we will analyse:
 
 | Illumina run accession | Isolate ID | Biosample accession | Linezolid MIC | Linezolid resistance |
 | ---------------------- | ---------- | ------------------- | ------------- | -------------------- |
@@ -146,7 +146,7 @@ Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by bindin
 | SRR9027816             | Ef-09      | SAMN11579758        | 16            | R                    |
 | SRR9027815             | Ef-11      | SAMN11579777        | >256          | R                    |
 
-First, move to your working directory and list the genome assembly files we will analyse:
+First, move to the working directory and list the genome assembly files we will analyse:
 ```
 ls ./data/E_faecium.kerschner2019.*
 ```
@@ -157,7 +157,7 @@ You should see the four files listed as shown below:
 ./data/E_faecium.kerschner2019.Ef-09.fa  ./data/E_faecium.kerschner2019.Ef-39.fa
 </pre>
 
-These four Illumina assemblies were downloaded using AllTheBacteria command-line tool (```atb info``` command) as explained in section 6.1. Now, run the commands below to execute amrfinder on each of the four *E. faecium* Illumina assemblies:
+These four Illumina assemblies were downloaded using AllTheBacteria command-line tool (```atb info``` command) as explained in section 6.1. Now, run the commands below to execute AmrFinderPlus on each of the four *E. faecium* Illumina assemblies:
 
 Remember that the amrfinder database must be downloaded first:
 ```
@@ -174,7 +174,9 @@ amrfinder -n ./data/E_faecium.kerschner2019.Ef-11.fa -O Enterococcus_faecium -o 
 amrfinder -n ./data/E_faecium.kerschner2019.Ef-39.fa -O Enterococcus_faecium -o E_faecium.kerschner2019.Ef-39.amrfinder.txt -d ./data/amrfinder_db/latest
 ```
 
-Now, we will used a specialized tool called [LRE-Finder](https://pubmed.ncbi.nlm.nih.gov/30863844/)), a tool developed to detect genetic markers of linezolid resistance in enterococci from whole-genome sequences. As this tools accepts raw Illumina reads as input, we will download the Illumina fastq.gz files using ```fastq-dl```:
+Now, pay particular attention to the output files of AMRFinder, those ending in ```.amrfinder.txt```. See if AMRFinder has found any genetic marker responsible for linezolid resistance in these genomes.
+
+Next, we will used a specialized tool called [LRE-Finder](https://pubmed.ncbi.nlm.nih.gov/30863844/)), a tool developed to detect genetic markers of linezolid resistance in enterococci from whole-genome sequences. As this tools accepts raw Illumina reads as input, we will download the Illumina fastq.gz files using ```fastq-dl```:
 
 ```
 conda activate fastq-dl
@@ -195,6 +197,11 @@ LRE-Finder.py -ipe ./data/SRR9027818_1.fastq.gz ./data/SRR9027818_2.fastq.gz -o 
 LRE-Finder.py -ipe ./data/SRR9027816_1.fastq.gz ./data/SRR9027816_2.fastq.gz -o SRR9027816_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
 LRE-Finder.py -ipe ./data/SRR9027815_1.fastq.gz ./data/SRR9027815_2.fastq.gz -o SRR9027815_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
 ```
+
+Now, pay attention to the output messages of LRE-Finder on your screen, particularly the linezolid mutations found, and the "Wild type ratio", "Mutant type ratio", and "Predicted phenotype" of each mutation. Check if LRE-Finder has found any genetic marker responsible for linezolid resistance in these genomes, and compare the output of LRE-Finder with that of AMRFinder for the corresponding genomes.
+
+**❓ Question**
+Are there any discrepancies in the linezolid resistance markers found? if so, what could explain these discrepancies?
 
 ### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
 
