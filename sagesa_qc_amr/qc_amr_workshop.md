@@ -135,6 +135,10 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ### 9.2 Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes
 
+In this exercise we will AMRFinder to detect AMR from whole genome sequences of *Salmonella enterica* with a focus on cases of AMR genotype-phenotype discrepancies described in [this study](https://www.sciencedirect.com/science/article/pii/S0740002020301192).
+
+See table below with reported cases of AMR genotype-phenotype discrepancies:
+
 | Strain ID | Nature of Error | Genotype-Phenotype Disagreement |
 |-----------|-----------------|---------------------------------|
 | B27 | False negative | Amoxicillin/clavulanate resistance without any resistance determinant |
