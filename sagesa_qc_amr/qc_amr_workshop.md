@@ -163,6 +163,30 @@ These four Illumina assemblies were downloaded using AllTheBacteria command-line
 
 
 
+Now, we will used a specialized tool called LRE-Finder, a tool developed to XXX. As this tools accepts raw Illumina reads as input, we will download the Illumina fastq.gz files using ```fastq-dl```:
+
+```
+conda activate fastq-dl
+
+fastq-dl --accession SRR9027862
+fastq-dl --accession SRR9027818
+fastq-dl --accession SRR9027816
+fastq-dl --accession SRR9027815
+
+mv *.fastq.gz ./data/
+```
+
+```
+LRE-Finder.py -ipe ./data/SRR9027862_1.fastq.gz ./data/SRR9027862_2.fastq.gz -o SRR9027862_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
+LRE-Finder.py -ipe ./data/SRR9027818_1.fastq.gz ./data/SRR9027818_2.fastq.gz -o SRR9027818_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
+LRE-Finder.py -ipe ./data/SRR9027816_1.fastq.gz ./data/SRR9027816_2.fastq.gz -o SRR9027816_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
+LRE-Finder.py -ipe ./data/SRR9027815_1.fastq.gz ./data/SRR9027815_2.fastq.gz -o SRR9027815_lre-finder -t_db ./data/elmDB/elm -ID 80 -1t1 -cge -matrix
+```
+
+
+
+
+
 
 
 
