@@ -153,6 +153,12 @@ First, move to your working directory and list the genome assembly files we will
 ls ./data/E_faecium.kerschner2019.*
 ```
 
+You should see the four files listed as shown below:
+<pre>
+./data/E_faecium.kerschner2019.Ef-07.fa  ./data/E_faecium.kerschner2019.Ef-11.fa
+./data/E_faecium.kerschner2019.Ef-09.fa  ./data/E_faecium.kerschner2019.Ef-39.fa
+</pre>
+
 These four Illumina assemblies were downloaded using AllTheBacteria command-line tool (```atb info``` command) as explained in section 6.1.
 
 
