@@ -137,21 +137,30 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 In this exercise we will AMRFinder to detect AMR from whole genome sequences of *Salmonella enterica* with a focus on cases of AMR genotype-phenotype discrepancies described in [this study](https://www.sciencedirect.com/science/article/pii/S0740002020301192).
 
-See table below with reported cases of AMR genotype-phenotype discrepancies:
+The table below includes the phenotypic antibiogram of four *Salmonella enterica* strains.
+
+| Strain ID | Ampicillin | Piperacillin | Amoxicillin/clavulanate | Chloramphenicol | Colistin | Fosfomycin | Trimethoprim/sulfamethoxazole | Amikacin | Gentamicin | Tobramycin | Tetracycline |
+|-----------|------------|--------------|-------------------------|-----------------|----------|------------|-------------------------------|----------|------------|------------|--------------|
+| B27 | >8 (R) | >16 (R) | >8/4 (R) | >8 (R) | >2 (R) | >32 (R) | >4/76 (R) | ≤8 (S) | >4 (R) | >4 (R) | >8 (R) |
+| WD17 | >8 (R) | 16 (I) | ≤2/1 (S) | ≤8 (S) | ≤2 (S) | ≤32 (S) | ≤2/38 (S) | ≤8 (S) | ≤2 (S) | ≤2 (S) | ≤4 (S) |
+| WT5 | >8 (R) | >16 (R) | >8/4 (R) | >8 (R) | ≤2 (S) | ≤32 (S) | >4/76 (R) | ≤8 (S) | ≤2 (S) | ≤2 (S) | >8 (R) |
+| WW28B | >8 (R) | >16 (R) | 8/4 (S) | >8 (R) | ≤2 (S) | >32 (R) | >4/76 (R) | ≤8 (S) | ≤2 (S) | ≤2 (S) | >8 (R) |
+
+And the table below reported cases of AMR genotype-phenotype discrepancies:
 
 | Strain ID | Nature of Error | Genotype-Phenotype Disagreement |
 |-----------|-----------------|---------------------------------|
 | B27 | False negative | Amoxicillin/clavulanate resistance without any resistance determinant |
 | B27 | False negative | Colistin resistance without any resistance determinant |
 | B27 | False positive | Amikacin susceptibility despite presence of *aac(6′)-Iaa* gene |
-| WD17 | False negative | Amikacin resistance without any resistance determinant |
+| WD17 | False negative | Ampicillin resistance without any resistance determinant |
 | WD17 | False positive | Amikacin and tobramycin susceptibility despite presence of *aac(6′)-Iaa* gene |
 | WT5 | False negative | Amoxicillin/clavulanate resistance without any resistance determinant |
 | WT5 | False positive | Amikacin and tobramycin susceptibility despite presence of *aac(6′)-Iaa* gene |
 | WW28B | False negative | Fosfomycin resistance without any resistance determinant |
 | WW28B | False positive | Amikacin and tobramycin susceptibility despite presence of *aac(6′)-Iaa* gene |
 
-
+Now, run AMRFinder for all four *Salmonella* genomes by executing the commands below:
 
 ```
 conda activate amrfinder
@@ -164,6 +173,18 @@ amrfinder -n ./data/Salmonella_enterica.WT5.fna -O Salmonella -o Salmonella_ente
 
 amrfinder -n ./data/Salmonella_enterica.WW28B.fna -O Salmonella -o Salmonella_enterica.WW28B.amrfinder.txt -d ./data/amrfinder_db/latest
 ```
+
+**❓ Question**
+All four *Salmonella* strains are resistant to ampicillin according to phenotypic testing. Can you identify which resistance determinant(s) are responsible for phenotypic resistance to ampicillin in each strain? Do all four strains carry at least one resistance determinant that could explain ampicillin resistance?
+
+**❓ Question**
+Three *Salmonella* strains are resistant to trimethoprim/sulfamethoxazole. Can you identify the AMR genes responsible for resistance to this antibiotic combination?
+
+**❓ Question**
+One *Salmonella* strain (WW28B) is resistant to fosfomycin. Can you identify the AMR gene(s) responsible for resistance to this antibiotic?
+
+**❓ Question**
+For false negatives, i.e. phenotypically resistant strains without any resistance determinant detected by AMRFinder, could you hypothesise what biological phenomenon could be responsible for such discrepancies?
 
 
 ### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
