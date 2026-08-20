@@ -1,4 +1,4 @@
-# Workshop Pathogen Genomics and AMR: Quality Assessment and Interpretation Report
+# Workshop Pathogen Genomics and AMR: Quality Assessment and AMR Interpretation Report
 
 ## Table Of Contents
 1. [Illumina Raw Sequencing Data Quality](#illuminaqc)
