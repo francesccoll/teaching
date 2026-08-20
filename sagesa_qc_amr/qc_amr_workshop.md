@@ -205,10 +205,9 @@ Are there any discrepancies in the linezolid resistance markers found? if so, wh
 
 ### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
 
-Intro text,
+Tetracycline resistance in *E. faecium* is primarily mediated by ribosomal protection proteins encoded by *tet(M)* and efflux pumps encoded by *tet(L)*. *tet(M)* is among the most prevalent tetracycline resistance genes in this species and is often carried on mobile genetic elements (MGEs). The authors of a [recent study](https://www.biorxiv.org/content/10.64898/2026.06.08.729070v1.full) identified many false negatives when predicting tetracycline resistance using AMRFinder from Illumina genome assemblies. They noticed that many of these false negatives (i.e. tetracycline resistant strains by phenotypic AST lacking *tet* genes in their genome) actually carried partially detected *tet(M)* genes. In this exercise, we will interrogate Illumina and hybrid assemblies to investigate the source of tetracycline genotype-phenotype discrepancies.
 
-
-First, we will use the original Illumina assemblies to identify resistance markers with AMRFinder running the commands below:
+First, we will use the original Illumina assemblies to identify resistance markers with AMRFinder:
 
 ```
 conda activate amrfinder
@@ -221,10 +220,10 @@ amrfinder -n ./data/E_faecium.VREN1631.illumina_assembly.fna -O Enterococcus_fae
 ```
 
 **❓ Question**
-Has AMRFinder identified any *tet* genes that can explain tetracycline resistance in these genomes?
+Has AMRFinder identified any *tet* genes that could explain phenotypic tetracycline resistance of these strains?
 ```grep "tet" *illumina_assembly.amrfinder.txt```
 
-Second, we will lower the minimum coverage to detect an AMR gene down to 30% (--coverage_min 0.3) from the default 50% to see if any new AMR gene is identified by AMRFinder:
+Next, we will lower the minimum coverage to detect an AMR gene with AMRFinder down to 30% (--coverage_min 0.3) from the default 50% to see if any new AMR gene is identified by AMRFinder:
 
 ```
 amrfinder -n ./data/E_faecium.IVR212.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.IVR212.illumina_assembly.amrfinder.0.3.txt -d ./data/amrfinder_db/latest --coverage_min 0.3 
@@ -235,7 +234,7 @@ amrfinder -n ./data/E_faecium.VREN1631.illumina_assembly.fna -O Enterococcus_fae
 ```
 
 **❓ Question**
-Has AMRFinder identified any *tet* genes that after lowing the minimum gene coverage threshold? In what coverage?
+Has AMRFinder identified any *tet* genes after lowering the minimum gene coverage threshold? In what coverage?
 ```grep "tet" *illumina_assembly.amrfinder.0.3.txt```
 
 Finally, we will run AMRFinder on hybrid assemblies (closed genomes) produced by sequencing all three strains with both Illumina and ONT:
@@ -249,12 +248,9 @@ amrfinder -n ./data/E_faecium.VREN1631.hybrid_assembly.fna -O Enterococcus_faeci
 ```
 
 **❓ Question**
-Has AMRFinder identified any *tet* genes in the hybrid assemblies? In how many copies and what coverage?
+Has AMRFinder identified any *tet* genes in the hybrid assemblies? How many copies and in what coverage?
 ```grep "tet" *hybrid_assembly.amrfinder.txt```
 
-
-
-
-
-
+**❓ Question**
+Based on the results of AMRFinder from Illumina and hybrid assemblies, which results would you trust more? what could explain the lack of full *tet(M)* detection in the Illumina assemblies?
 
