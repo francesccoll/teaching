@@ -205,8 +205,52 @@ Are there any discrepancies in the linezolid resistance markers found? if so, wh
 
 ### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
 
+Intro text,
 
 
+First, we will use the original Illumina assemblies to identify resistance markers with AMRFinder running the commands below:
+
+```
+conda activate amrfinder
+
+amrfinder -n ./data/E_faecium.IVR212.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.IVR212.illumina_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/E_faecium.VREN0576.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN0576.illumina_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/E_faecium.VREN1631.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN1631.illumina_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+```
+
+**❓ Question**
+Has AMRFinder identified any *tet* genes that can explain tetracycline resistance in these genomes?
+```grep "tet" *illumina_assembly.amrfinder.txt```
+
+Second, we will lower the minimum coverage to detect an AMR gene down to 30% (--coverage_min 0.3) from the default 50% to see if any new AMR gene is identified by AMRFinder:
+
+```
+amrfinder -n ./data/E_faecium.IVR212.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.IVR212.illumina_assembly.amrfinder.0.3.txt -d ./data/amrfinder_db/latest --coverage_min 0.3 
+
+amrfinder -n ./data/E_faecium.VREN0576.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN0576.illumina_assembly.amrfinder.0.3.txt -d ./data/amrfinder_db/latest --coverage_min 0.3 
+
+amrfinder -n ./data/E_faecium.VREN1631.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN1631.illumina_assembly.amrfinder.0.3.txt -d ./data/amrfinder_db/latest --coverage_min 0.3 
+```
+
+**❓ Question**
+Has AMRFinder identified any *tet* genes that after lowing the minimum gene coverage threshold? In what coverage?
+```grep "tet" *illumina_assembly.amrfinder.0.3.txt```
+
+Finally, we will run AMRFinder on hybrid assemblies (closed genomes) produced by sequencing all three strains with both Illumina and ONT:
+
+```
+amrfinder -n ./data/E_faecium.IVR212.hybrid_assembly.fna -O Enterococcus_faecium -o E_faecium.IVR212.hybrid_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/E_faecium.VREN0576.hybrid_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN0576.hybrid_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/E_faecium.VREN1631.hybrid_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN1631.hybrid_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+```
+
+**❓ Question**
+Has AMRFinder identified any *tet* genes in the hybrid assemblies? In how many copies and what coverage?
+```grep "tet" *hybrid_assembly.amrfinder.txt```
 
 
 
