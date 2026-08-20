@@ -139,7 +139,23 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
 
-Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a hospital outbreak in Austria. We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina data. 
+Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a hospital outbreak in Austria. We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina data. The table below includes the genome accessions, isolate Ids and linezolid MIC.
+
+| Illumina run accession | Isolate ID | Biosample accession | Linezolid MIC | Linezolid resistance |
+| ---------------------- | ---------- | ------------------- | ------------- | -------------------- |
+| SRR9027862             | Ef-39      | SAMN11579813        | 4             | R                    |
+| SRR9027818             | Ef-07      | SAMN11579756        | 16            | R                    |
+| SRR9027816             | Ef-09      | SAMN11579758        | 16            | R                    |
+| SRR9027815             | Ef-11      | SAMN11579777        | >256          | R                    |
+
+First, move to your working directory and list the genome assembly files we will analyse:
+```
+ls ./data/E_faecium.kerschner2019.*
+```
+
+These four Illumina assemblies were downloaded using AllTheBacteria command-line tool (```atb info``` command) as explained in section 6.1.
+
+
 
 
 
