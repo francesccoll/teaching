@@ -135,6 +135,18 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ### 9.2 Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes
 
+| Strain ID | Nature of Error | Genotype-Phenotype Disagreement |
+|-----------|-----------------|---------------------------------|
+| B27 | False negative | Amoxicillin/clavulanate resistance without any resistance determinant |
+| B27 | False negative | Colistin resistance without any resistance determinant |
+| B27 | False positive | Amikacin susceptibility despite presence of *aac(6′)-Iaa* gene |
+| WD17 | False negative | Amikacin resistance without any resistance determinant |
+| WD17 | False positive | Amikacin and tobramycin susceptibility despite presence of *aac(6′)-Iaa* gene |
+| WT5 | False negative | Amoxicillin/clavulanate resistance without any resistance determinant |
+| WT5 | False positive | Amikacin and tobramycin susceptibility despite presence of *aac(6′)-Iaa* gene |
+| WW28B | False negative | Fosfomycin resistance without any resistance determinant |
+| WW28B | False positive | Amikacin and tobramycin susceptibility despite presence of *aac(6′)-Iaa* gene |
+
 
 
 ```
