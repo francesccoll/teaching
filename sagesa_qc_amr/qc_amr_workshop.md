@@ -131,9 +131,24 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ## 9. Interpretation of AMR reports: case studies <a name="casestudies"></a>
 
-### 9.1 Identifying hetero-resistance and mixed infections from Mycobacterium tuberculosis genome data
+### 9.1 Identifying hetero-resistance and mixed infections from *Mycobacterium tuberculosis* genome data
 
-### 9.2 Resolving AMR phenotype-genotype discrepancies from Salmonella enterica genomes  
+### 9.2 Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes
+
+
+
+```
+conda activate amrfinder
+
+amrfinder -n ./data/Salmonella_enterica.B27.fna -O Salmonella -o Salmonella_enterica.B27.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/Salmonella_enterica.WD17.fna -O Salmonella -o Salmonella_enterica.WD17.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/Salmonella_enterica.WT5.fna -O Salmonella -o Salmonella_enterica.WT5.amrfinder.txt -d ./data/amrfinder_db/latest
+
+amrfinder -n ./data/Salmonella_enterica.WW28B.fna -O Salmonella -o Salmonella_enterica.WW28B.amrfinder.txt -d ./data/amrfinder_db/latest
+```
+
 
 ### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
 
