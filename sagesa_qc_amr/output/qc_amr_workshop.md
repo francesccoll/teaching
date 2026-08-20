@@ -139,6 +139,8 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
 
+Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a hospital outbreak in Austria. We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina data. 
+
 
 
 
