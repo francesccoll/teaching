@@ -47,7 +47,12 @@ source ~/miniconda3/bin/activate
 
 # 2. Install tools
 
+Before installing the tools below, navigate to a directory in your system where you would like to download the workshop data using the ```cd``` command. Next, clone this GitHub directory and navigate to the ```data``` subdirectory:
 
+```
+git clone https://github.com/francesccoll/teaching/
+cd teaching/sagesa_qc_amr/data/
+```
 
 ## 2.1 Installing [fastq-dl](https://github.com/rpetit3/fastq-dl)
 
@@ -212,7 +217,6 @@ cd lre-finder && make
 tar -xvzf elmDB.tar.gz
 kma index -i elmDB/elm.fsa -o elmDB/elm
 cp getGene LRE-Finder.py /usr/local/bin
-cp -r elmDB /mnt/home/users/csic108_res/resh000371/fscratch/sagesa_workshop/data/
 ```
 
 
