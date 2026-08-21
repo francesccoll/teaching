@@ -47,6 +47,8 @@ source ~/miniconda3/bin/activate
 
 # 2. Install tools
 
+
+
 ## 2.1 Installing [fastq-dl](https://github.com/rpetit3/fastq-dl)
 
 Create a mamba/conda environment with fastq-dl installed:
@@ -111,24 +113,109 @@ conda create -n porechop
 conda activate porechop
 git clone https://github.com/rrwick/Porechop.git
 cd Porechop
-python3 setup.py install
-porechop -h
+python3 setup.py install --prefix=$HOME/.local
+cd ..
+rm -rf Porechop
+```
+
+## 2.8 Installing [filtlong](https://github.com/rrwick/filtlong)
+
+Filtlong builds into a stand-alone executable:
+```
+git clone https://github.com/rrwick/Filtlong.git
+cd Filtlong
+make -j
+bin/filtlong -h
+```
+
+It is recommended to copy filtlong executable to a directory in your PATH:
+```
+cp bin/filtlong /usr/local/bin
+cd ..
+rm -rf Filtlong
+```
+
+## 2.9 Installing [AllTheBacteria command-line tool](https://allthebacteria.org/docs/cli/)
+
+On Linux or macOS:
+```
+curl -fsSL https://raw.githubusercontent.com/allthebacteria/atb-cli/main/install.sh | bash
+```
+Pre-built binaries for Linux, macOS, and Windows are available from: https://github.com/allthebacteria/atb-cli/releases/latest.
+
+Choose a data directory on a disk with enough space. The default metadata fetch includes AMR data and builds local indexes; this can use roughly 35 GB. Add another few GB if you fetch the sketchlib index.
+```
+atb config set general.data_dir /path/to/large/volume/atb-data
+atb fetch
+```
+ 
+## 2.10 Installing [quast](https://github.com/ablab/quast)
+
+See System requirements and Installation here: https://github.com/ablab/quast
+
+## 2.11 Installing [checkm2](https://github.com/chklovski/CheckM2)
+
+Create a mamba/conda environment with checkm2 installed:
+```
+mamba create -n checkm2 -c bioconda -c conda-forge checkm2
+conda activate checkm2
+checkm2 --version
+conda deactivate
+```
+
+You will also need to download and install the external DIAMOND database CheckM2 relies on for rapid annotation. Use checkm2 ```database --download``` to install it into a custom location using ```checkm2 database --download --path /custom/path/to/database/```. Replace ```/custom/path/to/database/``` with your chosen custom path. 
+
+```
+checkm2 database --download --path /custom/path/to/database
+export CHECKM2DB="/custom/path/to/database"
+```
+
+## 2.12 Installing [sylph](https://github.com/bluenote-1577/sylph)
+
+Create a mamba/conda environment with checkm2 installed:
+```
+mamba create -n sylph -c bioconda sylph
+conda activate sylph
+sylph --version
+conda deactivate
+```
+
+Download the pre-built sylph database:
+```
+wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb
+```
+
+## 2.13 Installing [amrfinder](https://github.com/ncbi/amr)
+
+Create a mamba/conda environment with amrfinder installed, and download the amrfinder database:
+```
+mamba create -y -c conda-forge -c bioconda -n amrfinder --strict-channel-priority ncbi-amrfinderplus
+conda activate amrfinder
+mkdir ./data/amrfinder_db
+amrfinder_update -d ./data/amrfinder_db
+conda deactivate
+```
+
+## 2.15 Installing [lre-finder](https://bitbucket.org/genomicepidemiology/lre-finder/src/master/)
+
+```
+git clone https://bitbucket.org/genomicepidemiology/kma.git
+cd kma && make
+cp kma /usr/local/bin
+cd ..
+rm -rf kma
+```
+
+```
+git clone https://bitbucket.org/genomicepidemiology/lre-finder.git
+cd lre-finder && make
+tar -xvzf elmDB.tar.gz
+kma index -i elmDB/elm.fsa -o elmDB/elm
+cp getGene LRE-Finder.py /usr/local/bin
+cp -r elmDB /mnt/home/users/csic108_res/resh000371/fscratch/sagesa_workshop/data/
 ```
 
 
-filtlong
-
-atb 
-
-quast
-
-checkm2 
-
-sylph
-
-amrfinder
-
-lre-finder
 
 
 
