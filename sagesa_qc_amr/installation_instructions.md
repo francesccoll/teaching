@@ -10,7 +10,7 @@ mamba --version
 
 If you don't already have conda installed, follow the next steps.
 
-### [[https://docs.conda.io/projects/miniconda/en/latest/|See the official install miniconda instructions]] for Linux
+### [See the official install miniconda instructions](https://docs.conda.io/projects/miniconda/en/latest/) for Linux
 
 OR
 
@@ -21,7 +21,7 @@ bash ./Miniconda3-latest-Linux-x86_64.sh
 
 Follow prompts to accept license, choose install path, and allow the new bin directory to be added to .bashrc
 
-### [[https://docs.conda.io/projects/miniconda/en/latest/|See Install miniconda instructions]] for MacOS
+### [See Install miniconda instructions](https://docs.conda.io/projects/miniconda/en/latest/) for MacOS
 
 OR
 
