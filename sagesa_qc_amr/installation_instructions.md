@@ -51,7 +51,7 @@ Before installing the tools below, navigate to a directory in your system where 
 
 ```
 git clone https://github.com/francesccoll/teaching/
-cd teaching/sagesa_qc_amr/data/
+cd teaching/sagesa_qc_amr/
 ```
 
 ## 2.1 Installing [fastq-dl](https://github.com/rpetit3/fastq-dl)
@@ -218,6 +218,7 @@ tar -xvzf elmDB.tar.gz
 kma index -i elmDB/elm.fsa -o elmDB/elm
 cp getGene LRE-Finder.py /usr/local/bin
 ```
+
 
 
 
