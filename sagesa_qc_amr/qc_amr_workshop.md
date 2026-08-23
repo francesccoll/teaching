@@ -1,5 +1,9 @@
 # Workshop Pathogen Genomics and AMR: Quality Assessment and AMR Interpretation Report
 
+## Acknowledgements
+
+These workshop is, in part, adapted from the original '[Computational practical 3: Accessing Data and Quality Control](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Data_access_QC/Computational_Practical_2_Accessing_Data_and_Quality_Control.md)' and '[Practical 4: Genome assembly and annotation](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/genome_assembly/AMR_2026_Genome_assembly.md)' developed for the course [Antimicrobial Resistance in Bacterial Pathogens - Africa (2026)](https://github.com/WCSCourses/AMR_2026/tree/main), with further original contributions by Dr Francesc Coll. The original module developers include: Dr. Stanford Kwenda, Mr. Collins Kigen, Mr Mishalan Moodley, Augusto Messa Jr., Silondiwe Nzimande, Miriam Mwamba (QC of Illumina and ONT data) and Dr Fahad Khokhar (assembly QC).
+
 ## Table Of Contents
 1. [Illumina Raw Sequencing Data Quality](#illuminaqc)
 2. [ONT Raw Sequencing Data Quality](#ontqc)
