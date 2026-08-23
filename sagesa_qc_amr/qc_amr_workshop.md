@@ -275,7 +275,7 @@ We will run CheckM2 on the same two assemblies we run QUAST on:
 checkm2 predict --allmodels --lowmem --remove_intermediates --threads 8 --input ./data/E_faecium.VREN1631.illumina_assembly.fna --output-directory ./results/checkm2_results
 ```
 
-Next, we will rename quast report:
+Next, we will rename CheckM2's report:
 
 ```
 mv ./results/checkm2_results/quality_report.tsv ./results/E_faecium.VREN1631.illumina_assembly.quality_report.tsv
