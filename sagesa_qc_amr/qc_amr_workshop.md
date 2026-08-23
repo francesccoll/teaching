@@ -140,6 +140,8 @@ In the command above we have used a number of options which are explained below:
 
 fastp will also generate an HTML file (default name is fastp.html) with more information on the trimming and some other QC information - open this file in a web browser to see the output.
 
+![](images/fastp_report.png) 
+
 **❓ Question** How many reads were removed by fastp due to a) low quality, b) too many Ns, and c) were too short after filtering?**
 
 ## 4. ONT Read Cleaning and Pre-processing <a name="ontcleaning"></a>
