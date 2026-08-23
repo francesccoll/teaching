@@ -214,6 +214,42 @@ conda deactivate
 
 ## 5. Sequencing Depth and Coverage <a name="depth"></a>
 
+### Map paired-end reads using Snippy
+
+```
+conda activate snippy
+snippy \
+  --cpus 8 \
+  --ref ./data/Enterococcus_faecium_Aus0004.CP003351.2.gb \
+  --R1 ./data/ERR1557083_1.fastq.gz \
+  --R2 ./data/ERR1557083_2.fastq.gz \
+  --outdir ./results/ERR1557083_snippy
+```
+
+### Calculate per-base depth 
+
+```
+samtools depth -a ./results/ERR1557083_snippy/snps.bam > ./results/ERR1557083_snippy/depth.txt
+```
+
+### Calculate mean depth of coverage
+
+```
+awk '{sum += $3; n++} END {print "Mean depth:", sum/n}' \
+  ./results/ERR1557083_snippy/depth.txt
+```
+
+### Calculate breadth of coverage
+
+```
+for threshold in 1 20 50 100; do
+    awk -v t=$threshold '$3 >= t {covered++} END {
+        printf ">=%dx coverage: %.2f%%\n", t, 100*covered/NR
+    }' ./results/ERR1557083_snippy/depth.txt
+done
+```
+
+
 ## 6. Genome Assembly Quality <a name="assemblyqc"></a>
 
 ### Step 6.1 Downloading Illumina genome assemblies from AllTheBacteria
