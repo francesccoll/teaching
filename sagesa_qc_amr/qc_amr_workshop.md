@@ -109,9 +109,38 @@ NanoPlot --fastq ERR8282741.fastq.gz -o qc_output
 ## 3. Illumina Read Cleaning and Pre-processing <a name="illuminacleaning"></a>
 
 ## Step 3.1: Run fastp
+
+```fastp``` is a fast tool for quality control and preprocessing of FASTQ sequencing data. It is commonly used to:
+* Trim low-quality bases and sequencing adapters.
+* Filter out poor-quality or very short reads.
+* Remove adapter contamination from Illumina reads.
+* Generate quality-control reports before and after filtering.
+* Process paired-end reads while maintaining read pairing.
+
+In a typical Illumina workflow, ```fastp``` is used after sequencing and before downstream analyses, such as alignment or variant calling, to improve the quality of the input reads.
+
+Activate the conda environment of ```fastp``` and run it for the fastq.gz files of ERR4095909:
+
 ```
-fastp --in1 SRR9027862_1.fastq.gz --in2 SRR9027862_2.fastq.gz --out1 SRR9027862_1.trimmed.fastq.gz --out2 SRR9027862.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 20
+conda activate fastp
+fastp --in1 ./data/ERR4095909_1.fastq.gz --in2 ./data/ERR4095909_2.fastq.gz --out1 ERR4095909_1.trimmed.fastq.gz --out2 ERR4095909_2.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 20
+conda deactivate
 ```
+
+In the command above we have used a number of options which are explained below:
+| Parameter | Description |
+|------------|------------|
+| `--in1` and `--in2` | Input files containing raw sequencing data from Read 1 and Read 2. |
+| `--out1` and `--out2` | Output files containing reads remaining after trimming and filtering. |
+| `--cut_front` | Trims low-quality bases from the start of the read using a sliding window. Bases are removed if the mean quality in the window is below the threshold; trimming stops once quality exceeds the threshold. |
+| `--cut_tail` | Performs the same sliding window trimming as `--cut_front`, but starts from the end of the read and moves toward the front. |
+| `--cut_mean_quality` | Sets the quality threshold used by both `--cut_front` and `--cut_tail`. |
+| `--length_required` | Removes reads that fall below this minimum length after trimming low-quality bases. |
+| `fastp` (default behavior) | Performs additional quality filtering by default: trims adapter sequences, removes reads with excessive Ns, discards reads that are too short after filtering, and retains only properly paired reads (if one read fails QC, its mate is also removed). |
+
+fastp will also generate an HTML file (default name is fastp.html) with more information on the trimming and some other QC information - open this file in a web browser to see the output.
+
+**❓ Question** How many reads were removed by fastp due to a) low quality, b) too many Ns, and c) were too short after filtering?**
 
 ## 4. ONT Read Cleaning and Pre-processing <a name="ontcleaning"></a>
 
