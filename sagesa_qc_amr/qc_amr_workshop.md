@@ -260,11 +260,22 @@ Navigate to the directory ```./results/quast/``` to explore the reports generate
 ## 7. Contamination and Data Integrity <a name="contamination"></a>
 
 ### Step 7.1 Using CheckM2 to predict genome completeness
+
+Before using CheckM2, its database must be downloaded:
 ```
-checkm2 predict --allmodels --lowmem --database_path {options.database} --remove_intermediates --threads 8
+conda activate checkm2
+checkm2 database --download --path ./data/
+```
+
+```
+checkm2 predict --allmodels --lowmem --remove_intermediates --threads 8 --input ./data/E_faecium.VREN1631.illumina_assembly.fna --output-directory ./results/checkm2_results
+mv ./results/checkm2_results/quality_report.tsv ./results/E_faecium.VREN1631.illumina_assembly.quality_report.tsv
+checkm2 predict --allmodels --lowmem --remove_intermediates --threads 8 --input ./data/E_faecium.VREN1631.hybrid_assembly.fna --output-directory ./results/checkm2_results --force
+mv ./results/checkm2_results/quality_report.tsv ./results/E_faecium.VREN1631.hybrid.assembly.quality_report.tsv
 ```
 
 ### Step 7.2 Using Sylph to identify taxonomic identity and contamination
+
 ```
 sylph profile $GTDB -1 $fastq1 -2 $fastq2 -t 8 > $run_accession".profiling.tsv"
 ```
