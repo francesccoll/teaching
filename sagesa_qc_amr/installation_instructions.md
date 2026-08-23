@@ -227,7 +227,14 @@ kma index -i elmDB/elm.fsa -o elmDB/elm
 cp getGene LRE-Finder.py /usr/local/bin
 ```
 
+## 2.15 Installing [Snippy](https://github.com/tseemann/snippy)
 
+```
+mamba install -c conda-forge -c bioconda snippy
+snippy --version
+snippy --check
+conda deactivate
+```
 
 
 
