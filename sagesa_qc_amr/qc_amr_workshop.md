@@ -10,9 +10,9 @@
 7. [Contamination and Data Integrity](#contamination)
 8. [AMR detection with AMRFinderPlus](#amrfinderplus)
 9. [Interpretation of AMR reports: case studies](#casestudies)
-9.1 [Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes](#casestudy1)
-9.2 [Identifying linezolid-resistance point mutations from *Enterococcus faecium* genomes](#casestudy2)
-9.3 [Effect of duplicated and truncated AMR genes on genotypic AMR determination](#casestudy3)
+* [Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes](#casestudy1)
+* [Identifying linezolid-resistance point mutations from *Enterococcus faecium* genomes](#casestudy2)
+* [Effect of duplicated and truncated AMR genes on genotypic AMR determination](#casestudy3)
 
    
 ## 1. Illumina Raw Sequencing Data Quality <a name="illuminaqc"></a>
