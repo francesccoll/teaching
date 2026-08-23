@@ -261,29 +261,68 @@ Navigate to the directory ```./results/quast/``` to explore the reports generate
 
 ### Step 7.1 Using CheckM2 to predict genome completeness
 
+CheckM2 is a machine-learning-based bioinformatics tool used to assess the quality of microbial genome assemblies and metagenome-assembled genomes (MAGs). It predicts genome completeness and contamination based primarily on the presence and abundance of protein-coding genes, providing an estimate of how much of the expected genome is represented and whether additional genomic material may be present.
+
 Before using CheckM2, its database must be downloaded:
 ```
 conda activate checkm2
 checkm2 database --download --path ./data/
 ```
 
+We will run CheckM2 on the same two assemblies we run QUAST on:
+
 ```
 checkm2 predict --allmodels --lowmem --remove_intermediates --threads 8 --input ./data/E_faecium.VREN1631.illumina_assembly.fna --output-directory ./results/checkm2_results
+```
+
+Next, we will rename quast report:
+
+```
 mv ./results/checkm2_results/quality_report.tsv ./results/E_faecium.VREN1631.illumina_assembly.quality_report.tsv
+```
+
+And run it for the hybrid assembly of the same strain:
+
+```
 checkm2 predict --allmodels --lowmem --remove_intermediates --threads 8 --input ./data/E_faecium.VREN1631.hybrid_assembly.fna --output-directory ./results/checkm2_results --force
+```
+```
 mv ./results/checkm2_results/quality_report.tsv ./results/E_faecium.VREN1631.hybrid.assembly.quality_report.tsv
 ```
 
 ### Step 7.2 Using Sylph to identify taxonomic identity and contamination
 
+Sylph is a fast metagenomic profiling tool that identifies microorganisms present in shotgun sequencing data and estimates their relative abundance. Even in cases where a single bacterial isolate is been sequenced, we can use taxonomic classifiers like Sylph to check for contaminants different from our target and expected organism.
+
+If you have not done it already, make sure the Sylph database is downloaded first:
 ```
-sylph profile $GTDB -1 $fastq1 -2 $fastq2 -t 8 > $run_accession".profiling.tsv"
+wget http://faust.compbio.cs.cmu.edu/sylph-stuff/gtdb-r220-c200-dbv1.syldb
+```
+
+Next, we will download the Illumina fastq files of the same *E. faecium* strain we analyzed with CheckM2:
+
+```
+conda activate fastq-dl
+fastq-dl --accession ERR1557083 --outdir ./data/
+conda deactivate
+```
+
+```
+conda activate sylph
+sylph profile gtdb-r220-c200-dbv1.syldb -1 ./data/ERR1557083_1.fastq.gz -2 ./data/ERR1557083_2.fastq.gz -t 8 > ./results/ERR1557083.profiling.tsv
+conda deactivate
 ```
 
 ## 8. AMR detection with AMRFinderPlus <a name="amrfinderplus"></a>
 
+AMRFinderPlus is a bioinformatics tool from the NCBI for detecting antimicrobial resistance (AMR) genes and resistance-associated mutations in bacterial genomes or protein sequences. You can use the command below to run AMRFinderPlus on the same bacterial assembly. We will run and interpret AMRFinderPlus reports more extensively in the next case studies.
+
 ```
-amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --threads 8
+conda activate amrfinder
+
+amrfinder -n ./data/E_faecium.VREN1631.illumina_assembly.fna -O Enterococcus_faecium -o E_faecium.VREN1631.illumina_assembly.amrfinder.txt -d ./data/amrfinder_db/latest
+
+conda deactivate
 ```
 
 ## 9. Interpretation of AMR reports: case studies <a name="casestudies"></a>
