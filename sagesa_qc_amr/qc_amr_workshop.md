@@ -51,8 +51,49 @@ Upon successful completion `fastqc` will create an analysis report in html forma
 
 ### Step 1.3:  Opening the FastQC Report (GUI)
 
+#### Basic statistics <a name="basics"></a>
 
+![](images/fastqc_image1.png) 
 
+This is a table containing basic information gleaned from the sequence reads such as total number of reads, length (range) of sequence reads and GC%. From this table alone, we can infer average coverage (total number of reads and length of reads) and compare the GC content with the species that we expect the isolate to belong to. In our example, we have an *Klebsiella pneumoniae* isolate that has a GC percent of 55-78%. This matches with the reported GC% of our reads. 
+
+#### Per base sequence quality <a name="perbase"></a>
+
+![](images/fastqc_image2.png) 
+
+The **y-axis** shows the quality scores, while the **x-axis** represents the base positions within the reads. The **blue line** indicates the mean quality score at each position. The green, amber, and red regions represent **high, acceptable, and low-quality scores**, respectively. If the blue line enters the red region, the reads contain a higher proportion of low-quality bases and may have more sequencing errors. In such cases, **trimming low-quality bases may be necessary before downstream analysis**.
+
+#### Per sequence quality <a name="persequence"></a>
+
+![](images/fastqc_image3.png) 
+
+The Per Sequence Quality Scores plot shows the overall quality of the reads. The x-axis represents the mean quality score per read, while the y-axis shows the number of reads at each score. A high proportion of low-quality reads may indicate a systematic sequencing problem, potentially affecting only part of the run.
+
+#### Per sequence GC content <a name="persequencegc"></a>
+
+![](images/fastqc_image4.png) 
+
+The figure shows the theoretical distribution of GC content per sequence based on the GC percent of the genome, and the actual distribution in your sample. In a normal random library you have a roughly normal distribution of GC content (a single peak) where the peak corresponds to the overall GC content of the underlying genome. An unusually shaped distribution could indicate a contaminated library or some other kind of bias in library prep. 
+
+#### Per base N content <a name="perbasen"></a>
+
+![](images/fastqc_image5.png) 
+
+If a sequencer is unable to make a base call with sufficient confidence then it will normally substitute an N rather than a conventional base call. This module plots out the percentage of base calls at each position for which an N was called. It's not unusual to have a very low proportion of Ns especially nearer the end of reads. However, if proportion is higher that could cause problems in downstream analysis.
+
+#### Sequence duplication <a name="duplication"></a>
+
+![](images/fastqc_image6.png) 
+
+This figure shows the proportion of unique and duplicated sequences in the library. Low duplication is generally expected, while high duplication may indicate high sequencing coverage or enrichment bias, such as PCR overamplification.
+
+#### Adapter content <a name="adapters"></a>
+
+![](images/fastqc_image7.png) 
+
+It is important to ensure that the sequence reads are not contaminated with adapter sequences used in library preparation. This module reports the abundance of various adapters used in sequencing. The plot above shows a cumulative percentage count of the proportion of the reads at each position that matches adapter sequences. Once a sequence has been seen in a read, it is counted as being present right through to the end of the read so the percentages you see will only increase as the read length goes on. 
+
+From all the above data metrics it appears that the sequence reads of the isolate ERR4095909 are of good quality and can be used to run the downstream analysis.
 
 ## 2. ONT Raw Sequencing Data Quality <a name="ontqc"></a>
 
