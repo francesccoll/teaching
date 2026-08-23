@@ -158,6 +158,14 @@ atb fetch
 
 See System requirements and Installation here: https://github.com/ablab/quast
 
+Or install Quast via conda:
+```
+mamba create -n quast -c conda-forge -c bioconda quast
+conda activate quast
+quast --version
+conda deactivate
+```
+
 ## 2.11 Installing [checkm2](https://github.com/chklovski/CheckM2)
 
 Create a mamba/conda environment with checkm2 installed:
