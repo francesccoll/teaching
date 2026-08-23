@@ -121,6 +121,26 @@ nanoQC ./data/ERR8282741.fastq.gz -o ERR8282741_qc_output
 conda deactivate
 ```
 
+Double click on the ```./ERR8282741_qc_output/nanoQC.html``` to visualise NanoQC report.
+
+#### Read length distribution <a name="nanoqc_read_lengths"></a>
+
+![](images/nanoQC_image1.png) 
+
+The read length distribution plot produced by NanoQC show the distribution of read lengths in an ONT fastq file. It indicates the typical read length, the range of read lengths, and the presence of unusually short or long reads, providing an overview of the sequencing output and read-length characteristics.
+
+#### Nucleotide diversity <a name="nanoqc_nuc_div"></a>
+
+![](images/nanoQC_image2.png) 
+
+The nucleotide diversity plot above shows the relative frequency of A, T, G and C across the reads. Nucleotide composition is relatively stable throughout most of the reads, but pronounced variation is observed at the 5′ and 3′ termini, indicating positional nucleotide bias at the read ends. The stable composition across the central region suggests relatively consistent sequence composition, while the terminal deviations may reflect technical or sequencing-related effects.
+
+#### Quality score <a name="nanoqc_quality_score"></a>
+
+![](images/nanoQC_image3.png) 
+
+The reads show generally good and stable sequencing quality, with minor variability at the beginning and a pronounced quality deterioration at the very end of the reads. Trimming the terminal low-quality bases will be appropriate. 
+
 Finally, we will run NanoPlot on the same ONT data. NanoPlot is a bioinformatics tool for quality assessment and statistical characterization of Oxford Nanopore sequencing data. It generates graphical and numerical summaries of read length distributions, quality scores, sequencing yield, and other read-level metrics, enabling evaluation of data quality and identification of potential sequencing biases or anomalies prior to downstream analysis.
 
 ```
@@ -129,9 +149,9 @@ NanoPlot --fastq ./data/ERR8282741.fastq.gz -o ERR8282741_qc_output
 conda deactivate
 ```
 
-Navigate to the output QC directory ```ERR8282741_qc_output```:
+Visualize the Summary statistics produced by NanoPlot ```NanoStats.txt```:
 ```
-cd ERR8282741_qc_output
+cat ./ERR8282741_qc_output/NanoStats.txt
 ```
 
 ## 3. Illumina Read Cleaning and Pre-processing <a name="illuminacleaning"></a>
@@ -176,14 +196,20 @@ fastp will also generate an HTML file (default name is fastp.html) with more inf
 
 ## Step 4.1: Adapter Trimming with Porechop
 ```
-porechop -i ERR8282741.fastq.gz -o ERR8282741_trimmed.fastq.gz
+conda activate porechop
+porechop -i ./data/ERR8282741.fastq.gz -o ./data/ERR8282741_trimmed.fastq.gz
+conda deactivate
 ```
 ```
-filtlong --keep_percent 90 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered.fastq
+conda activate filtlong
+filtlong --keep_percent 90 ./data/ERR8282741_trimmed.fastq.gz > ./data/ERR8282741_filtered.fastq
 ```
 ```
-filtlong --min_length 1000 ERR8282741_filtered.fastq > ERR8282741_filtered_min1k.fastq
+filtlong --min_length 1000 ./data/ERR8282741_filtered.fastq > ./data/ERR8282741_filtered_min1k.fastq
+conda deactivate
 ```
+
+
 
 ## 5. Sequencing Depth and Coverage <a name="depth"></a>
 
