@@ -16,11 +16,15 @@
 
 ### Step 1.1: Download fastq files
 
+```fastq-dl``` is a command-line tool for downloading sequencing FASTQ files from the ENA (European Nucleotide Archive) or NCBI SRA. You give it an accession (e.g. a BioProject, sample, experiment, or individual sequencing run), and it looks up the associated runs and downloads their FASTQs. By default, it tries ENA first and can fall back to SRA. The usual output is .fastq.gz files plus metadata such as run-info.tsv. If you have an SRA/ENA accession and just want the corresponding FASTQ files without manually finding FTP URLs or dealing with SRA conversion yourself, fastq-dl is a convenient option.
+
+Activate ```fastq-dl``` conda environment and download the fastq.gz files of the following run accessions.
 ```
 conda activate fastq-dl
 fastq-dl --accession SRR9027862
 ```
 
+NOTE: as an alternative, fastq.gz files can also be downloaded with ```wget``` using corresponding FASTQ FTP URLs:
 ```
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/002/SRR9027862/SRR9027862_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/002/SRR9027862/SRR9027862_2.fastq.gz
