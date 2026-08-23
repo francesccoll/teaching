@@ -22,6 +22,7 @@ Activate ```fastq-dl``` conda environment and download the fastq.gz files of the
 ```
 conda activate fastq-dl
 fastq-dl --accession ERR4095909 --outdir ./data/
+conda deactivate 
 ```
 
 NOTE: as an alternative, fastq.gz files can also be downloaded with ```wget``` using corresponding FASTQ FTP URLs:
@@ -99,11 +100,38 @@ From all the above data metrics it appears that the sequence reads of the isolat
 
 ## Step 2.1: Quality Control with NanoQC and NanoPlot
 
+First, we will download the raw ONT sequence data of a *K. pneumoniae* strain through their run accession (ERR8282741). Activate ```fastq-dl``` conda environment and download the fastq.gz files:.
+
 ```
-nanoQC ERR8282741.fastq.gz -o qc_output
+conda activate fastq-dl
+fastq-dl --accession ERR8282741 --outdir ./data/
+conda deactivate 
 ```
+
+Make sure that fastq file has been downloaded:
 ```
-NanoPlot --fastq ERR8282741.fastq.gz -o qc_output
+ls -lh ./data/ERR8282741.fastq.gz
+```
+ 
+Next, we will run NanoQC. NanoQC is a quality-control tool specifically designed for Oxford Nanopore sequencing data. It analyses FASTQ files and generates reports summarizing read quality and characteristics, such as read length, quality scores, and sequencing quality distributions. It is mainly used to assess the overall quality of Nanopore sequencing data before downstream analysis and identify potential problems with the sequencing run.
+
+```
+conda activate nanoqc
+nanoQC ./data/ERR8282741.fastq.gz -o ERR8282741_qc_output
+conda deactivate
+```
+
+Finally, we will run NanoPlot on the same ONT data. NanoPlot is a bioinformatics tool for quality assessment and statistical characterization of Oxford Nanopore sequencing data. It generates graphical and numerical summaries of read length distributions, quality scores, sequencing yield, and other read-level metrics, enabling evaluation of data quality and identification of potential sequencing biases or anomalies prior to downstream analysis.
+
+```
+conda activate nanoplot
+NanoPlot --fastq ./data/ERR8282741.fastq.gz -o ERR8282741_qc_output
+conda deactivate
+```
+
+Navigate to the output QC directory ```ERR8282741_qc_output```:
+```
+cd ERR8282741_qc_output
 ```
 
 ## 3. Illumina Read Cleaning and Pre-processing <a name="illuminacleaning"></a>
