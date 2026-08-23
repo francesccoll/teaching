@@ -21,33 +21,38 @@
 Activate ```fastq-dl``` conda environment and download the fastq.gz files of the following run accessions.
 ```
 conda activate fastq-dl
-fastq-dl --accession SRR9027862
+fastq-dl --accession ERR4095909 --outdir ./data/
 ```
 
 NOTE: as an alternative, fastq.gz files can also be downloaded with ```wget``` using corresponding FASTQ FTP URLs:
 ```
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/002/SRR9027862/SRR9027862_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/002/SRR9027862/SRR9027862_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR409/009/ERR4095909/ERR4095909_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR409/009/ERR4095909/ERR4095909_2.fastq.gz
 ```
 
 ### Step 1.2: Running FastQC on Illumina fastqs
 
 ```
-fastqc
+ls -lh ./data/ERR4095909*
 ```
+
+You should see something like
+<pre>
+-rw-r-----+ 1 resh000371 csic108_res 109M Aug 23 11:42 ./data/ERR4095909_1.fastq.gz
+-rw-r-----+ 1 resh000371 csic108_res 136M Aug 23 11:42 ./data/ERR4095909_2.fastq.gz
+</pre>
+
+Run the following command to run the fastqc tool on both the read files:
+```
+fastqc ./data/ERR4095909_1.fastq.gz ./data/ERR4095909_2.fastq.gz
+```
+
+Upon successful completion `fastqc` will create an analysis report in html format, one for each read file named after the name of the file you used as input. We can see the report by opening the html file in the web-browser.
 
 ### Step 1.3:  Opening the FastQC Report (GUI)
 
 
-### Step 1.4:  Running MultiQC
 
-```
-cd output/multiqc
-```
-
-```
-multiqc ./
-```
 
 ## 2. ONT Raw Sequencing Data Quality <a name="ontqc"></a>
 
