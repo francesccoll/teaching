@@ -10,6 +10,9 @@
 7. [Contamination and Data Integrity](#contamination)
 8. [AMR detection with AMRFinderPlus](#amrfinderplus)
 9. [Interpretation of AMR reports: case studies](#casestudies)
+9.1 [Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes](#casestudy1)
+9.2 [Identifying linezolid-resistance point mutations from *Enterococcus faecium* genomes](#casestudy2)
+9.3 [Effect of duplicated and truncated AMR genes on genotypic AMR determination](#casestudy3)
 
    
 ## 1. Illumina Raw Sequencing Data Quality <a name="illuminaqc"></a>
@@ -266,9 +269,7 @@ amrfinder -n $assembly -O Enterococcus_faecium -o $out_file -d $amrfinder_db --t
 
 ## 9. Interpretation of AMR reports: case studies <a name="casestudies"></a>
 
-### 9.1 Identifying hetero-resistance and mixed infections from *Mycobacterium tuberculosis* genome data
-
-### 9.2 Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes
+### 9.1 Resolving AMR phenotype-genotype discrepancies from *Salmonella enterica* genomes <a name="casestudy1"></a>
 
 In this exercise we will AMRFinder to detect AMR from whole genome sequences of *Salmonella enterica* with a focus on cases of AMR genotype-phenotype discrepancies described in [this study](https://www.sciencedirect.com/science/article/pii/S0740002020301192).
 
@@ -322,7 +323,7 @@ Two *Salmonella* strains (B27 and WW28B) are resistant to fosfomycin. Can you id
 For false negatives, i.e. phenotypically resistant strains without any resistance determinant detected by AMRFinder, could you hypothesise what biological phenomenon may be responsible for such discrepancies?
 
 
-### 9.3 Identifying linezolid-resistance point mutations from Enterococcus faecium genomes
+### 9.2 Identifying linezolid-resistance point mutations from *Enterococcus faecium* genomes <a name="casestudy2"></a>
 
 Linezolid, an oxazolidinone antibiotic that inhibits protein synthesis by binding to the 50S subunit of the 23S rRNA, is considered a last-resort treatment option for vancomycin-resistant Enterococci (VRE). However, linezolid resistance has been reported in *E. faecium*, with the most prevalent resistance mechanisms involving mutations within the V domain of the 23S rRNA. In this exercise, we will analyse the genomes of four linezolid resistant VRE strains that originated from a [hospital outbreak in Austria](https://link.springer.com/article/10.1186/s13756-019-0598-z). We will evaluate the ability of different bioinformatic tools to detect linezolid resistance genetic markers from Illumina sequence data. The table below includes the accessions, isolate Ids, and linezolid MIC of the VRE genomes we will analyse:
 
@@ -390,7 +391,7 @@ Now, pay attention to the output messages of LRE-Finder on your screen, particul
 **❓ Question**
 Are there any discrepancies in the linezolid resistance markers found? if so, what could explain these discrepancies?
 
-### 9.4 Effect of duplicated and truncated AMR genes on genotypic AMR determination
+### 9.3 Effect of duplicated and truncated AMR genes on genotypic AMR determination <a name="casestudy3"></a>
 
 Tetracycline resistance in *E. faecium* is primarily mediated by ribosomal protection proteins encoded by *tet(M)* and efflux pumps encoded by *tet(L)*. *tet(M)* is among the most prevalent tetracycline resistance genes in this species and is often carried on mobile genetic elements (MGEs). The authors of a [recent study](https://www.biorxiv.org/content/10.64898/2026.06.08.729070v1.full) identified many false negatives when predicting tetracycline resistance using AMRFinder from Illumina genome assemblies. They noticed that many of these false negatives (i.e. tetracycline resistant strains by phenotypic AST lacking *tet* genes in their genome) actually carried partially detected *tet(M)* genes. In this exercise, we will interrogate Illumina and hybrid assemblies to investigate the source of tetracycline genotype-phenotype discrepancies.
 
