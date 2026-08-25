@@ -8,6 +8,11 @@ conda --version
 mamba --version
 ```
 
+If conda is installed on your system but mamba is not, you can install mamba using the following command:
+```
+conda install -n base -c conda-forge mamba
+```
+
 If you don't already have conda installed, follow the next steps.
 
 ### [See the official install miniconda instructions](https://docs.conda.io/projects/miniconda/en/latest/) for Linux
