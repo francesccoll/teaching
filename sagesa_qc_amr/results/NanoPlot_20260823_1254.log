@@ -1,0 +1,16 @@
+2026-08-23 12:54:59,223 NanoPlot 1.47.1 started with arguments Namespace(threads=4, verbose=False, store=False, raw=False, huge=False, outdir='ERR8282741_qc_output', no_static=False, prefix='', tsv_stats=False, only_report=False, info_in_report=False, maxlength=None, minlength=None, drop_outliers=False, downsample=None, loglength=False, percentqual=False, alength=False, minqual=None, runtime_until=None, readtype='1D', barcoded=False, no_supplementary=False, color='#4CB391', colormap='Greens', format=['png'], plots=['kde', 'dot'], legacy=None, listcolors=False, listcolormaps=False, no_N50=False, N50=False, title=None, font_scale=1, dpi=300, hide_stats=False, fastq=['./data/ERR8282741.fastq.gz'], fasta=None, fastq_rich=None, fastq_minimal=None, summary=None, bam=None, ubam=None, cram=None, pickle=None, feather=None, path='ERR8282741_qc_output/')
+2026-08-23 12:54:59,223 Python version is: 3.14.7 | packaged by conda-forge | (main, Aug 19 2026, 15:32:49) [GCC 15.3.0]
+2026-08-23 12:55:21,887 Nanoget: Gathered all metrics of 70610 reads
+2026-08-23 12:55:21,947 Calculated statistics
+2026-08-23 12:55:21,948 Using sequenced read lengths for plotting.
+2026-08-23 12:55:21,950 NanoPlot:  Valid color #4CB391.
+2026-08-23 12:55:21,951 NanoPlot:  Valid colormap Greens.
+2026-08-23 12:55:21,951 NanoPlot:  Creating length plots for Read length.
+2026-08-23 12:55:21,951 NanoPlot:  Using 70610 reads maximum of 84512bp.
+2026-08-23 12:55:22,100 Chromium init'ed with kwargs {}
+2026-08-23 12:55:22,101 Found chromium path: /mnt/home/users/csic108_res/resh000371/.local/share/choreographer/deps/chrome-linux64/chrome
+2026-08-23 12:55:22,101 Temp directory created: /localscratch/users/tmp/tmpq28hrct7.
+2026-08-23 12:55:22,102 Opening browser.
+2026-08-23 12:55:22,103 Temp directory created: /localscratch/users/tmp/tmpb20ul8xb.
+2026-08-23 12:55:22,103 Temporary directory at: /localscratch/users/tmp/tmpb20ul8xb
+2026-08-23 12:55:23,506 Conforming 1 to file:///localscratch/users/tmp/tmpq28hrct7/index.html

@@ -1,0 +1,25 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                    E_faecium.VREN1631.illumina_assembly  E_faecium.VREN1631.hybrid_assembly
+# contigs (>= 0 bp)         232                                   5                                 
+# contigs (>= 1000 bp)      169                                   5                                 
+# contigs (>= 5000 bp)      104                                   4                                 
+# contigs (>= 10000 bp)     86                                    2                                 
+# contigs (>= 25000 bp)     36                                    2                                 
+# contigs (>= 50000 bp)     19                                    2                                 
+Total length (>= 0 bp)      3050911                               3274240                           
+Total length (>= 1000 bp)   3020355                               3274240                           
+Total length (>= 5000 bp)   2870628                               3269776                           
+Total length (>= 10000 bp)  2746610                               3258349                           
+Total length (>= 25000 bp)  1889411                               3258349                           
+Total length (>= 50000 bp)  1291444                               3258349                           
+# contigs                   195                                   5                                 
+Largest contig              108992                                2929583                           
+Total length                3039254                               3274240                           
+GC (%)                      37.52                                 37.58                             
+N50                         38787                                 2929583                           
+N90                         10040                                 328766                            
+auN                         43360.3                               2654243.2                         
+L50                         25                                    1                                 
+L90                         85                                    2                                 
+# N's per 100 kbp           0.00                                  0.00                              
