@@ -284,6 +284,7 @@ grep -c ">" ./data/E_faecium.kerschner2019.Ef-11.fa
 QUAST (Quality Assessment Tool for Genome Assemblies) is a bioinformatics tool used to evaluate the quality and structural characteristics of genome assemblies. It calculates metrics such as total assembly length, number of contigs, N50/N90, largest contig, GC content, and misassemblies. When a reference genome is available, QUAST can additionally assess assembly accuracy, genome coverage, and structural discrepancies relative to the reference.
 
 ```
+conda activate quast
 quast -h
 ```
 
