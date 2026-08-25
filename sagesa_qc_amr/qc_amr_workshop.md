@@ -21,6 +21,12 @@ These workshop is, in part, adapted from the original '[Computational practical 
    
 ## 1. Illumina Raw Sequencing Data Quality <a name="illuminaqc"></a>
 
+First, navigate to the workshop directory, that is, the directory on your system where you downloaded the workshop GitHub project (```git clone https://github.com/francesccoll/teaching/```):
+(replace ```teaching/sagesa_qc_amr/``` in the example below)
+```
+cd teaching/sagesa_qc_amr/
+```
+
 ### Step 1.1: Download fastq files
 
 ```fastq-dl``` is a command-line tool for downloading sequencing FASTQ files from the ENA (European Nucleotide Archive) or NCBI SRA. You give it an accession (e.g. a BioProject, sample, experiment, or individual sequencing run), and it looks up the associated runs and downloads their FASTQs. By default, it tries ENA first and can fall back to SRA. The usual output is .fastq.gz files plus metadata such as run-info.tsv. If you have an SRA/ENA accession and just want the corresponding FASTQ files without manually finding FTP URLs or dealing with SRA conversion yourself, fastq-dl is a convenient option.
