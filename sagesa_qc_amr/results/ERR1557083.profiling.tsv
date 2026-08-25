@@ -1,0 +1,2 @@
+Sample_file	Genome_file	Taxonomic_abundance	Sequence_abundance	Adjusted_ANI	Eff_cov	ANI_5-95_percentile	Eff_lambda	Lambda_5-95_percentile	Median_cov	Mean_cov_geq1	Containment_ind	Naive_ANI	kmers_reassigned	Contig_name
+./data/ERR1557083_1.fastq.gz	gtdb_genomes_reps_r220/database/GCF/029/023/785/GCF_029023785.1_genomic.fna.gz	100.0000	100.0000	99.45	60.000	NA-NA	HIGH	NA-NA	60	60.316	9409/11147	99.45	0	NZ_CP118955.1 Enterococcus faecium strain DSM 20477 chromosome, complete genome

@@ -1,0 +1,2 @@
+Name	Completeness_General	Contamination	Completeness_Specific	Completeness_Model_Used	Translation_Table_Used	Coding_Density	Contig_N50	Average_Gene_Length	Genome_Size	GC_Content	Total_Coding_Sequences	Total_Contigs	Max_Contig_Length	Additional_Notes
+E_faecium.VREN1631.hybrid_assembly	98.92	1.65	100.0	Neural Network (Specific Model)	11	0.849	2929583	293.31795195954487	3274240	0.38	3164	5	2929583	None
