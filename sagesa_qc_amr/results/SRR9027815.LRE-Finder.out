@@ -1,0 +1,14 @@
+<b>Species identified:</b>	<table style="width:100%">
+<tr bgcolor=#B22222><th><i>Enterococcus faecium</i></th></tr><br>
+</table><br>
+<b>Genes Identified:</b><br>
+<table style="width:100%">
+<tr bgcolor=#B22222><th>Gene</th><th>Template_identity</th><th>Depth</th></tr>
+<tr><td>23S_Enterococcus_faecium</td><td>100.0</td><td>531.3</td><tr>
+</table><br>
+<b>Identified mutations in 23s:</b><br>
+<table style="width:100%">
+<tr bgcolor=#B22222><th>Position in reference</th><th>Wild type ratio [%]</th><th>Mutant type ratio [%]</th><th>Predicted phenotype</th></tr>
+<tr><td>G2505A</td><td>97.6</td><td>0.4</td><td>S</td><tr>
+<tr><td>G2576T</td><td>35.2</td><td>63.5</td><td>R</td><tr>
+</table></tr><br>
